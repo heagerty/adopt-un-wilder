@@ -1,2 +1,25 @@
 
 /* Primary: #F76C6C */
+
+/* fonts */
+
+
+@font-face {
+    font-family: 'ITC Avant Garde Gothic Std Book';
+    font-style: normal;
+    font-weight: normal;
+    src: local('ITC Avant Garde Gothic Std Book'), url('itc-avant-garde-gothic-std-book-58957161d80eb.woff') format('woff');
+}
+@font-face {
+    font-family: 'ITC Avant Garde Gothic Std Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('ITC Avant Garde Gothic Std Bold'), url('itc-avant-garde-gothic-std-bold-589572c7e9955.woff') format('woff');
+}
+.ag-thick {
+    font-family: 'ITC Avant Garde Gothic Std Bold', Ariel, sans-serif;
+}
+
+.ag-thin {
+    font-family: 'ITC Avant Garde Gothic Std Book', Ariel, sans-serif;
+}

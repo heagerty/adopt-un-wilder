@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Adopt un Wilder!{% endblock %}</title>
-    {% block stylesheets %}<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> {% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="fonts.css">
+        <link rel="stylesheet" href="style.css">
+    {% endblock %}
 </head>
 <body>
 {% block header %}
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-            <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-            Bootstrap
+        <a class="navbar-brand" href="/">
+            <img src="/images/WCS_logo_pink_176x60.png" width="90" height="30" class="d-inline-block align-top" alt="">
+            <span class="ag ag-thick">adopte</span><span class="ag ag-thin">un</span><span class="ag ag-thick">wilder</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
