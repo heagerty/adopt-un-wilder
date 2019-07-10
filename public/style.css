@@ -30,3 +30,22 @@
     height: 40px;
     width: 40px;
 }
+
+body, html {
+    height: 100%;
+}
+
+.background {
+    /*
+    background-image: url("/images/backgrounds/girl-at-computer.jpeg");
+    background-image: url("/images/backgrounds/beach-beautiful-bikini.jpg");
+    background-image: url("/images/backgrounds/girl_computer_screen.jpg");
+    background-image: url("/images/backgrounds/laptop-notebook-work.jpg");
+    */
+    background-image: url("/images/backgrounds/girl-at-computer.jpeg");
+
+    height: calc(100% - 59px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
