@@ -43,6 +43,11 @@ class Student
      */
     private $skills;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $profilePhoto;
+
     public function __construct()
     {
         $this->skills = new ArrayCollection();
@@ -123,6 +128,18 @@ class Student
         if ($this->skills->contains($skill)) {
             $this->skills->removeElement($skill);
         }
+
+        return $this;
+    }
+
+    public function getProfilePhoto(): ?string
+    {
+        return $this->profilePhoto;
+    }
+
+    public function setProfilePhoto(?string $profilePhoto): self
+    {
+        $this->profilePhoto = $profilePhoto;
 
         return $this;
     }

@@ -24,8 +24,12 @@
                 <td>{{ student.dateOfBirth ? student.dateOfBirth|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>LinkedInProfile</th>
+                <th>LinkedIn Profile</th>
                 <td>{{ student.linkedInProfile }}</td>
+            </tr>
+            <tr>
+                <th>Profile photo</th>
+                <td><img src="{{ student.profilePhoto }}" alt="profile photo"></td>
             </tr>
         </tbody>
     </table>

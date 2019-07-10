@@ -2,6 +2,7 @@
 
 {% block title %}Student index{% endblock %}
 
+
 {% block body %}
     <h1>Student index</h1>
 
@@ -11,9 +12,10 @@
                 <th>Id</th>
                 <th>Firstname</th>
                 <th>Lastname</th>
-                <th>DateOfBirth</th>
+                <th>Date of Birth</th>
                 <th>Skills</th>
-                <th>LinkedInProfile</th>
+                <th>LinkedIn Profile</th>
+                <th>Profile Photo</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -30,6 +32,11 @@
                 {% endfor %}
                 </td>
                 <td>{{ student.linkedInProfile }}</td>
+                {% if student.profilePhoto %}
+                    <td><span class="glyphicon glyphicon-ok-circle">OK</span></td>
+                    {% else %}
+                    <td><span> </span></td>
+                {% endif %}
                 <td>
                     <a href="{{ path('student_show', {'id': student.id}) }}">show</a>
                     <a href="{{ path('student_edit', {'id': student.id}) }}">edit</a>
