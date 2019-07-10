@@ -33,7 +33,7 @@
                 </td>
                 <td>{{ student.linkedInProfile }}</td>
                 {% if student.profilePhoto %}
-                    <td><span class="glyphicon glyphicon-ok-circle">OK</span></td>
+                    <td><img class="pp-thumb" src="{{ student.profilePhoto }}" alt="profile photo"></td>
                     {% else %}
                     <td><span> </span></td>
                 {% endif %}

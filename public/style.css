@@ -23,3 +23,10 @@
 .ag-thin {
     font-family: 'ITC Avant Garde Gothic Std Book', Ariel, sans-serif;
 }
+
+
+/* image thumbnails */
+.pp-thumb {
+    height: 40px;
+    width: 40px;
+}
