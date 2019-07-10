@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Students{% endblock %}
+
+
+{% block body %}
+    <div class="container-fluid">
+    <h1>Students</h1>
+
+
+<h2>Test #1</h2>
+    <div class="card-deck">
+
+                {% for student in students %}
+                    <div class="card">
+                        <img src="{{ student.profilePhoto }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ student.firstname }} {{ student.lastname }}</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                {% endfor %}
+
+    </div>
+
+
+
+    <h2>Test #2</h2>
+<div class="card-deck">
+
+    {% for student in students %}
+                <div class="card card-horizontal mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="{{ student.profilePhoto }}" class="card-img" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ student.firstname }} {{ student.lastname }}</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    {% endfor %}
+
+
+</div>
+
+
+
+
+    <h2>Test #3</h2>
+
+    <div class="card-deck">
+        {% for student in students %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{ student.profilePhoto }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ student.firstname }} {{ student.lastname }}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+
+
+
+    <h2>Test #4</h2>
+    <div class="card-deck">
+        {% for student in students %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{ student.profilePhoto }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ student.firstname }} {{ student.lastname }}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+    <h2>Test #5</h2>
+    <div class="card-deck">
+        {% for student in students %}
+        <div class="card">
+            <img src="{{ student.profilePhoto }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ student.firstname }} {{ student.lastname }}</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Date of Birth</th>
+                <th>Skills</th>
+                <th>LinkedIn Profile</th>
+                <th>Profile Photo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.firstname }}</td>
+                <td>{{ student.lastname }}</td>
+                <td>{{ student.dateOfBirth ? student.dateOfBirth|date('Y-m-d') : '' }}</td>
+                <td>
+                {% for skill in student.skills %}
+                {{ skill }}
+                {% endfor %}
+                </td>
+                <td>{{ student.linkedInProfile }}</td>
+                {% if student.profilePhoto %}
+                    <td><img class="pp-thumb" src="{{ student.profilePhoto }}" alt="profile photo"></td>
+                    {% else %}
+                    <td><span> </span></td>
+                {% endif %}
+                <td>
+                    <a href="{{ path('student_show', {'id': student.id}) }}">show</a>
+                    <a href="{{ path('student_edit', {'id': student.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('student_new') }}">Create new</a>
+    </div>
+{% endblock %}

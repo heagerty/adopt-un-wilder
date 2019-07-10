@@ -69,5 +69,16 @@ body, html {
 }
 
 
+.card {
+    min-width: 15rem;
+    max-width: 15rem;
+    margin: 3rem;
+}
+
+.card-horizontal {
+    min-width: 25rem;
+    max-width: 25rem;
+    margin: 3rem;
+}
 
 
