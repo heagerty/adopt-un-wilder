@@ -48,6 +48,16 @@ class Student
      */
     private $profilePhoto;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $username;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $password;
+
     public function __construct()
     {
         $this->skills = new ArrayCollection();
@@ -140,6 +150,30 @@ class Student
     public function setProfilePhoto(?string $profilePhoto): self
     {
         $this->profilePhoto = $profilePhoto;
+
+        return $this;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
 
         return $this;
     }
