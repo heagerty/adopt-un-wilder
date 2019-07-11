@@ -1,10 +1,8 @@
 
 
-p:not(:last-child) {
-    margin: 0 0 20px;
-}
 
-.tabbed-login-box {
+
+.tabbed-login-box {                          /* box size */
     max-width: 600px;
     padding: 30px;
     border: 1px solid rgba(0,0,0,.2);
@@ -12,13 +10,13 @@ p:not(:last-child) {
     box-shadow: 0 1px 3px rgba(0,0,0,.1);
 }
 
-section {
+section {                               /* interior formatting */
     display: none;
     padding: 20px 0 0;
     border-top: 1px solid #abc;
 }
 
-input {
+#tab1, #tab2 {
     display: none;
 }
 
@@ -37,11 +35,6 @@ label:before {
     font-weight: normal;
     margin-right: 10px;
 }
-
-label[for*='1']:before { content: '\f1cb'; }
-label[for*='2']:before { content: '\f17d'; }
-label[for*='3']:before { content: '\f16c'; }
-label[for*='4']:before { content: '\f171'; }
 
 label:hover {
     color: #789;
@@ -116,7 +109,7 @@ input[type=text], input[type=password] {
 }
 
 
-.container {
+.container2 {
     padding: 16px;
 }
 
@@ -134,4 +127,8 @@ span.psw {
     .cancelbtn {
         width: 100%;
     }
+}
+
+.fas {
+    padding-right: 1rem;
 }
