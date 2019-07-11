@@ -47,14 +47,27 @@ body, html {
     background-image: url("/images/backgrounds/beach-beautiful-bikini.jpg");
     background-image: url("/images/backgrounds/girl_computer_screen.jpg");
     background-image: url("/images/backgrounds/laptop-notebook-work.jpg");
+        background-image: url("/images/backgrounds/girl-laying.jpg");
+        background-image: url("/images/backgrounds/attractive-bedroom.jpg");
+        background-image: url("/images/backgrounds/shhh.jpg");
+        background-image: url("/images/backgrounds/man-laptop.jpg");
     */
-    background-image: url("/images/backgrounds/girl-at-computer.jpeg");
 
+    background-image: url("/images/backgrounds/shhh.jpg");
+    height: calc(100% - 96px);
+    background-position: left;
+    background-repeat: no-repeat;
+
+}
+
+/* to cover
+    background-image: url("/images/backgrounds/girl-at-computer.jpeg");
     height: calc(100% - 59px);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
+
+ */
 
 
 
