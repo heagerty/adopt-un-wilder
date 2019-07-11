@@ -19,6 +19,8 @@ class StudentType extends AbstractType
             ->add('lastname')
             ->add('dateOfBirth', BirthdayType::class)
             ->add('linkedInProfile')
+            ->add('username')
+            ->add('password')
             ->add('profilePhoto')
             ->add('skills', EntityType::class, [
                 'class' => Skill::class,
