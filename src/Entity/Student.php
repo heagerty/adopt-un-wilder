@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinTable;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\StudentRepository")
@@ -58,9 +59,31 @@ class Student
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(type="string", length=60, nullable=true)
+     */
+    private $tagline;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $about;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Skill", inversedBy="interestedStudents")
+     * @ORM\JoinTable(name="skills_to_learn")
+     */
+    private $skillsToLearn;
+
     public function __construct()
     {
         $this->skills = new ArrayCollection();
+        $this->skillsToLearn = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -177,4 +200,74 @@ class Student
 
         return $this;
     }
+
+    public function getAge(): ?string
+    {
+        $now = new \DateTime();
+        $age = $now->diff($this->dateOfBirth);
+        return $age->y;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(?string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getTagline(): ?string
+    {
+        return $this->tagline;
+    }
+
+    public function setTagline(?string $tagline): self
+    {
+        $this->tagline = $tagline;
+
+        return $this;
+    }
+
+    public function getAbout(): ?string
+    {
+        return $this->about;
+    }
+
+    public function setAbout(?string $about): self
+    {
+        $this->about = $about;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Skill[]
+     */
+    public function getSkillsToLearn(): Collection
+    {
+        return $this->skillsToLearn;
+    }
+
+    public function addSkillsToLearn(Skill $skillsToLearn): self
+    {
+        if (!$this->skillsToLearn->contains($skillsToLearn)) {
+            $this->skillsToLearn[] = $skillsToLearn;
+        }
+
+        return $this;
+    }
+
+    public function removeSkillsToLearn(Skill $skillsToLearn): self
+    {
+        if ($this->skillsToLearn->contains($skillsToLearn)) {
+            $this->skillsToLearn->removeElement($skillsToLearn);
+        }
+
+        return $this;
+    }
+
 }

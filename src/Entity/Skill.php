@@ -28,9 +28,15 @@ class Skill
      */
     private $students;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Student", mappedBy="skillsToLearn")
+     */
+    private $interestedStudents;
+
     public function __construct()
     {
         $this->students = new ArrayCollection();
+        $this->interestedStudents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -81,5 +87,33 @@ class Skill
     public function __toString(): string
     {
         return $this->name;
+    }
+
+    /**
+     * @return Collection|Student[]
+     */
+    public function getInterestedStudents(): Collection
+    {
+        return $this->interestedStudents;
+    }
+
+    public function addInterestedStudent(Student $interestedStudent): self
+    {
+        if (!$this->interestedStudents->contains($interestedStudent)) {
+            $this->interestedStudents[] = $interestedStudent;
+            $interestedStudent->addSkillsToLearn($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInterestedStudent(Student $interestedStudent): self
+    {
+        if ($this->interestedStudents->contains($interestedStudent)) {
+            $this->interestedStudents->removeElement($interestedStudent);
+            $interestedStudent->removeSkillsToLearn($this);
+        }
+
+        return $this;
     }
 }

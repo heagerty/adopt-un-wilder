@@ -18,11 +18,21 @@ class StudentType extends AbstractType
             ->add('firstname')
             ->add('lastname')
             ->add('dateOfBirth', BirthdayType::class)
+            ->add('tagline')
+            ->add('about')
             ->add('linkedInProfile')
+            ->add('city')
             ->add('username')
             ->add('password')
             ->add('profilePhoto')
             ->add('skills', EntityType::class, [
+                'class' => Skill::class,
+                'choice_label' => 'name',
+                'expanded' => true,
+                'multiple' => true,
+                'by_reference' => false,
+            ])
+            ->add('skillsToLearn', EntityType::class, [
                 'class' => Skill::class,
                 'choice_label' => 'name',
                 'expanded' => true,

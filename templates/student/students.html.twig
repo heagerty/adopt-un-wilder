@@ -8,107 +8,40 @@
     <h1>Students</h1>
 
 
-<h2>Test #1</h2>
-    <div class="card-deck">
-
-                {% for student in students %}
-                    <div class="card">
-                        <img src="{{ student.profilePhoto }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ student.firstname }} {{ student.lastname }}</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                {% endfor %}
-
-    </div>
-
-
-
-    <h2>Test #2</h2>
-<div class="card-deck">
-
-    {% for student in students %}
-                <div class="card card-horizontal mb-3" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="{{ student.profilePhoto }}" class="card-img" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ student.firstname }} {{ student.lastname }}</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    {% endfor %}
-
-
-</div>
-
-
-
-
-    <h2>Test #3</h2>
-
-    <div class="card-deck">
-        {% for student in students %}
-        <div class="card" style="width: 18rem;">
-            <img src="{{ student.profilePhoto }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ student.firstname }} {{ student.lastname }}</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    {% endfor %}
-    </div>
-
-
 
 
     <h2>Test #4</h2>
-    <div class="card-deck">
+    <div class="card-deck student-card-deck">
         {% for student in students %}
-        <div class="card" style="width: 18rem;">
-            <img src="{{ student.profilePhoto }}" class="card-img-top" alt="...">
+        <div class="card student-card">
+            <img src="{{ student.profilePhoto }}" class="card-img-top" alt="profile picture">
             <div class="card-body">
                 <h5 class="card-title">{{ student.firstname }} {{ student.lastname }}</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">{{ student.tagline }}</p>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">{{ student.age }} ans,  {{ student.city }}</li>
+                <li class="list-group-item">Je connais :
+                    {% for skill in student.skills %}
+                        <span class="badge badge-pill badge-info">{{ skill }}</span>
+                    {% endfor %}
+                </li>
+                <li class="list-group-item">Je voudrais apprendre :
+                    {% for skill in student.skillsToLearn %}
+                        <span class="badge badge-pill badge-success">{{ skill }}</span>
+                    {% endfor %}
+                </li>
+                <li class="list-group-item">{{ student.about }}</li>
             </ul>
             <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                <a href="{{ student.linkedInProfile }}"> <i class="fab fa-linkedin fa-3x"></i></a>
+
             </div>
         </div>
         {% endfor %}
     </div>
 
 
-
-    <h2>Test #5</h2>
-    <div class="card-deck">
-        {% for student in students %}
-        <div class="card">
-            <img src="{{ student.profilePhoto }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ student.firstname }} {{ student.lastname }}</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
 
 
 
