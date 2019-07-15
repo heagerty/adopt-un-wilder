@@ -1,16 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Student{% endblock %}
+{% block title %}{{ student.firstname }} {{ student.lastname }}{% endblock %}
 
 {% block body %}
-    <h1>Student</h1>
-
+    <h1>{{ student.firstname }} {{ student.lastname }}'s public profile</h1>
+<div class="container">
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ student.id }}</td>
-            </tr>
             <tr>
                 <th>Firstname</th>
                 <td>{{ student.firstname }}</td>
@@ -20,23 +16,61 @@
                 <td>{{ student.lastname }}</td>
             </tr>
             <tr>
-                <th>DateOfBirth</th>
+                <th>Date Of Birth</th>
                 <td>{{ student.dateOfBirth ? student.dateOfBirth|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ student.city }}</td>
+            </tr>
+            <tr>
+                <th>Skills</th>
+                <td>
+                    {% for skill in student.skills %}
+                        <span class="badge badge-pill badge-info">{{ skill }}</span>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>I'd like to learn</th>
+                <td>
+                    {% for skill in student.skillsToLearn %}
+                        <span class="badge badge-pill badge-success">{{ skill }}</span>
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
                 <th>LinkedIn Profile</th>
                 <td>{{ student.linkedInProfile }}</td>
             </tr>
             <tr>
+                <th>Tagline</th>
+                <td>{{ student.tagline }}</td>
+            </tr>
+            <tr>
+                <th>About</th>
+                <td>{{ student.about }}</td>
+            </tr>
+            <tr>
                 <th>Profile photo</th>
                 <td><img src="{{ student.profilePhoto }}" alt="profile photo"></td>
             </tr>
+            <tr>
+                <th>Profile photo address</th>
+                <td>{{ student.profilePhoto }}</td>
+            </tr>
         </tbody>
     </table>
+<div class="bottom_buttons">
+    <a href="{{ path('student_index') }}" type="button" class="btn btn-primary">back to list</a>
 
-    <a href="{{ path('student_index') }}">back to list</a>
+    <a href="{{ path('student_edit', {'id': student.id}) }}" type="button" class="btn btn-success">edit</a>
 
-    <a href="{{ path('student_edit', {'id': student.id}) }}">edit</a>
+
 
     {{ include('student/_delete_form.html.twig') }}
+
+</div>
+
+</div>
 {% endblock %}
