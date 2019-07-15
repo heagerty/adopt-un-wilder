@@ -120,3 +120,8 @@ h1 {
 .bottom_buttons {
     text-align: center;
 }
+
+.student_show_photo_thumb {
+    height: 15%;
+    width: 15%;
+}
