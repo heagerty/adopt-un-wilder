@@ -1,7 +1,10 @@
+
+
+
 <div class="tabbed-login-box">
 
     <input id="tab1" type="radio" name="tabs" checked>
-   <label for="tab1"><i class="fas fa-blender"></i>  Login</label>
+    <label for="tab1"><i class="fas fa-blender"></i>  Login</label>
 
     <input id="tab2" type="radio" name="tabs">
     <label for="tab2"><i class="fas fa-feather-alt"></i>  Sign up</label>
@@ -12,26 +15,35 @@
         <h2>
             Login
         </h2>
-        <form action="/action" method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        <form method="post">
 
 
             <div class="container container2">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
+                <label for="inputUsername" class="sr-only">Username</label>
+                <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}" >
 
-                <button type="submit" class="buttonbutton">Login</button>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                </label>
-            </div>
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Remember me
+                    </label>
+                </div>
 
-            <div class="container container2 container3" style="background-color:#f1f1f1">
+                <button class="btn btn-lg btn-primary" type="submit">
+                    Sign in
+                </button>
                 <button type="button" class="cancelbtn buttonbutton">Cancel</button>
                 <span class="psw">Forgot <a href="#">password?</a></span>
+
             </div>
+
         </form>
     </section>
 
@@ -39,7 +51,7 @@
         <h2>
             Sign up
         </h2>
-        <form action="/action_page.php">
+        <form action="/action_page.php" method="POST">
 
 
             <div class="container container2">
@@ -55,7 +67,7 @@
                 </label>
             </div>
 
-            <div class="container container2 container3" style="background-color:#f1f1f1">
+            <div class="container container2 container3">
                 <button type="button" class="buttonbutton cancelbtn">Cancel</button>
                 <span class="psw">Forgot <a href="#">password?</a></span>
             </div>
@@ -63,3 +75,6 @@
     </section>
 
 </div>
+
+
+

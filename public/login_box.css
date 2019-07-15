@@ -1,3 +1,11 @@
+/* homepage log-in box */
+
+.tabbed-login-box {
+    position: relative;
+    top: 4rem;
+    left: 6rem;
+    background-color: white;
+}
 
 
 
@@ -111,6 +119,10 @@ input[type=text], input[type=password] {
 
 .container2 {
     padding: 16px;
+}
+
+.container3 {
+    background-color:#f1f1f1;
 }
 
 span.psw {

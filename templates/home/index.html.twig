@@ -3,16 +3,16 @@
 {% block title %}Adopte un Wilder{% endblock %}
 
     {% block otherstyle %}
-            <link rel="stylesheet" href="/login_box.css">
+         <link rel="stylesheet" href="/login_test.css">
     {% endblock %}
 
 
 {% block body %}
+    <div class="container-fluid background">
+    <h1><span class="ag ag-thick-title">adopte</span><span class="ag ag-thin-title">un</span><span class="ag ag-thick-title">wilder</span></h1>
+        {% include 'security/_login_test.html.twig' %}
 
-        <div class="container-fluid background">
+    </div>
 
-               {% include '_login_box.html.twig' %}
-
-        </div>
 
 {% endblock %}

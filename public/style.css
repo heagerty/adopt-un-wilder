@@ -25,7 +25,6 @@
 .ag-thin {
     font-family: 'ITC Avant Garde Gothic Std Book', Ariel, sans-serif;
     font-size: 1.2rem;
-
 }
 
 
@@ -41,6 +40,24 @@ body, html {
     height: 100%;
 }
 
+h1 {
+    text-align: center;
+    padding-top: 2rem;
+    margin-bottom: 0;
+}
+
+.ag-thick-title {
+    font-family: 'ITC Avant Garde Gothic Std Bold', Ariel, sans-serif;
+    font-size: 4.3rem;
+
+}
+
+.ag-thin-title {
+    font-family: 'ITC Avant Garde Gothic Std Book', Ariel, sans-serif;
+    font-size: 4.2rem;
+}
+
+
 .background {
     /*
     background-image: url("/images/backgrounds/girl-at-computer.jpeg");
@@ -53,6 +70,7 @@ body, html {
         background-image: url("/images/backgrounds/man-laptop.jpg");
     */
 
+    background-color: #8959A8;
     background-image: url("/images/backgrounds/shhh.jpg");
     height: calc(100% - 96px);
     background-position: left;
@@ -68,19 +86,6 @@ body, html {
     background-size: cover;
 
  */
-
-
-
-
-/* homepage log-in box */
-
-.tabbed-login-box {
-    position: relative;
-    top: 8rem;
-    left: 6rem;
-    background-color: white;
-}
-
 
 
 
@@ -107,3 +112,6 @@ body, html {
     margin: 2rem auto;
 }
 
+.signinform {
+    max-width: 30%;
+}
