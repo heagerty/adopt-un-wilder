@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Student;
 use App\Form\StudentType;
 use App\Repository\StudentRepository;
+use App\Service\Codewars;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -61,10 +62,28 @@ class StudentController extends AbstractController
     /**
      * @Route("/{id}", name="student_show", methods={"GET"})
      */
-    public function show(Student $student): Response
+    public function show(Student $student, Codewars $codewars): Response
     {
+
+        $kata = [];
+        $honor = 0;
+
+        if (null == ($student->getCodewarsId())) {
+            return $this->render('student/show.html.twig', [
+                'student' => $student,
+                'honor' => 0,
+                'kata' => [],
+            ]);
+        }
+        $codewarsId = c;
+        $honor = $codewars->getHonor($codewarsId);
+        $kata = $codewars->getKata($codewarsId);
+
+
         return $this->render('student/show.html.twig', [
             'student' => $student,
+            'honor' => $honor,
+            'kata' => $kata,
         ]);
     }
 

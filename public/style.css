@@ -16,6 +16,7 @@
     font-weight: normal;
     src: local('ITC Avant Garde Gothic Std Bold'), url('fonts/ag/itc-avant-garde-gothic-std-bold-589572c7e9955.woff') format('woff');
 }
+
 .navbar-brand {
     padding-top: 1rem;
 }
@@ -139,4 +140,10 @@ i {
 .student_show_photo_thumb {
     height: 15%;
     width: 15%;
+}
+
+.cw-icon {
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
 }

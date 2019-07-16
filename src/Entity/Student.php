@@ -87,6 +87,11 @@ class Student implements UserInterface
      */
     private $roles = [];
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $codewarsId;
+
     public function __construct()
     {
         $this->skills = new ArrayCollection();
@@ -317,6 +322,18 @@ class Student implements UserInterface
         if ($this->skillsToLearn->contains($skillsToLearn)) {
             $this->skillsToLearn->removeElement($skillsToLearn);
         }
+
+        return $this;
+    }
+
+    public function getCodewarsId(): ?string
+    {
+        return $this->codewarsId;
+    }
+
+    public function setCodewarsId(?string $codewarsId): self
+    {
+        $this->codewarsId = $codewarsId;
 
         return $this;
     }

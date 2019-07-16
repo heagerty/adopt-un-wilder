@@ -14,7 +14,7 @@
     <div class="card-deck student-card-deck">
         {% for student in students %}
         <div class="card student-card">
-            <img src="{{ student.profilePhoto }}" class="card-img-top" alt="profile picture">
+            <a href="/students/{{ student.id }}"><img src="{{ student.profilePhoto }}" class="card-img-top" alt="profile picture"></a>
             <div class="card-body">
                 <h5 class="card-title">{{ student.firstname }} {{ student.lastname }}</h5>
                 <p class="card-text">{{ student.tagline }}</p>

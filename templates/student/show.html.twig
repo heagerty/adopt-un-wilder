@@ -59,6 +59,17 @@
                 <th>Profile photo address</th>
                 <td>{{ student.profilePhoto }}</td>
             </tr>
+            <tr>
+                <th>Codewars Honor</th>
+                <td><img src="/images/icons-logos/codewars.png" alt="codewars icon" class="cw-icon"> {{ honor }}</td>
+            </tr>
+            <tr>
+                <th>Codewars Kata</th><td><ul>
+                {% for kato in kata %}
+                <li>{{ kato }}</li>
+                    {% endfor %}</ul></td>
+
+            </tr>
         </tbody>
     </table>
 <div class="bottom_buttons">
