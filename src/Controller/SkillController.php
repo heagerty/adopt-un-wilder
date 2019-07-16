@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Skill;
 use App\Form\SkillType;
+use App\Entity\Student;
 use App\Repository\SkillRepository;
 use App\Repository\StudentRepository;
 use App\Service\Slugify;
@@ -118,19 +119,60 @@ class SkillController extends AbstractController
         $data = $request->request->all();
 
 
-            $repository = $this->getDoctrine()->getRepository(Skill::class);
+            $skillRepository = $this->getDoctrine()->getRepository(Skill::class);
+            $studentRepository = $this->getDoctrine()->getRepository(Student::class);
 
-            //$search = $request->request->get('search');
-
-            $skill = $repository->findOneBy([
+            //test if search is a skill:
+        if ($skillRepository->findOneBy(['name' => $data['search']])) {
+            $skill = $skillRepository->findOneBy([
                 'name' => $data['search'],
-
             ]);
 
-            $skills = $repository->findAll();
-
+            $skills = $skillRepository->findAll();
             $students = $skill->getStudents();
 
+            return $this->render('skill/skill_search.html.twig', [
+                'students' => $students,
+                'skills' => $skills,
+            ]);
+        }
+
+        //test if search is a student - firstname:
+        if ($studentRepository->findOneBy(['firstname' => $data['search']])) {
+            $student = $studentRepository->findOneBy([
+                'firstname' => $data['search'],
+            ]);
+
+            $id = $student->getId();
+
+
+            return $this->redirectToRoute('student_show', [
+                'id' => $id,
+
+            ]);
+        }
+
+        //test if search is a student - lastname:
+        if ($studentRepository->findOneBy(['lastname' => $data['search']])) {
+            $student = $studentRepository->findOneBy([
+                'lastname' => $data['search'],
+            ]);
+
+            $id = $student->getId();
+
+
+            return $this->redirectToRoute('student_show', [
+                'id' => $id,
+            ]);
+        }
+
+            //$skill = $skillRepository->findOneBy([
+            //    'name' => $data['search'],
+            //]);
+
+
+            $skills = $skillRepository->findAll();
+            $students = $studentRepository->findAll();
 
             return $this->render('skill/skill_search.html.twig', [
                 'students' => $students,
