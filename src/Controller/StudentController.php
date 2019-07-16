@@ -72,18 +72,18 @@ class StudentController extends AbstractController
             return $this->render('student/show.html.twig', [
                 'student' => $student,
                 'honor' => 0,
-                'kata' => [],
+                //'kata' => [],
             ]);
         }
         $codewarsId = $student->getCodewarsId();
         $honor = $codewars->getHonor($codewarsId);
-        $kata = $codewars->getKata($codewarsId);
+        //$kata = $codewars->getKata($codewarsId);
 
 
         return $this->render('student/show.html.twig', [
             'student' => $student,
             'honor' => $honor,
-            'kata' => $kata,
+            //'kata' => $kata,
         ]);
     }
 
