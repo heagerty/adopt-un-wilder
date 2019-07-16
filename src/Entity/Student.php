@@ -92,6 +92,11 @@ class Student implements UserInterface
      */
     private $codewarsId;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $githubId;
+
     public function __construct()
     {
         $this->skills = new ArrayCollection();
@@ -334,6 +339,18 @@ class Student implements UserInterface
     public function setCodewarsId(?string $codewarsId): self
     {
         $this->codewarsId = $codewarsId;
+
+        return $this;
+    }
+
+    public function getGithubId(): ?string
+    {
+        return $this->githubId;
+    }
+
+    public function setGithubId(?string $githubId): self
+    {
+        $this->githubId = $githubId;
 
         return $this;
     }

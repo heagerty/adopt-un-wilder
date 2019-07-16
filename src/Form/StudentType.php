@@ -21,6 +21,7 @@ class StudentType extends AbstractType
             ->add('tagline')
             ->add('about')
             ->add('linkedInProfile')
+            ->add('githubId')
             ->add('codewarsId')
             ->add('city')
             ->add('username')
