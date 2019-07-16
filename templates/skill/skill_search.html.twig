@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Students{% endblock %}
+
+
+{% block body %}
+    <div class="container-fluid">
+        <h1>Students</h1>
+
+
+
+
+        <h2>Test #4</h2>
+        <div class="card-deck student-card-deck">
+            {% for student in students %}
+                <div class="card student-card">
+                    <img src="{{ student.profilePhoto }}" class="card-img-top" alt="profile picture">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ student.firstname }} {{ student.lastname }}</h5>
+                        <p class="card-text">{{ student.tagline }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{ student.age }} ans,  {{ student.city }}</li>
+                        <li class="list-group-item">Je connais :
+                            {% for skill in student.skills %}
+                                <span class="badge badge-pill badge-info">{{ skill }}</span>
+                            {% endfor %}
+                        </li>
+                        <li class="list-group-item">Je voudrais apprendre :
+                            {% for skill in student.skillsToLearn %}
+                                <span class="badge badge-pill badge-success">{{ skill }}</span>
+                            {% endfor %}
+                        </li>
+                        <li class="list-group-item">{{ student.about }}</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="{{ student.linkedInProfile }}"> <i class="fab fa-linkedin fa-3x"></i></a>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+
+
+
+
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Date of Birth</th>
+                <th>Skills</th>
+                <th>LinkedIn Profile</th>
+                <th>Profile Photo</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for student in students %}
+                <tr>
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.firstname }}</td>
+                    <td>{{ student.lastname }}</td>
+                    <td>{{ student.dateOfBirth ? student.dateOfBirth|date('Y-m-d') : '' }}</td>
+                    <td>
+                        {% for skill in student.skills %}
+                            {{ skill }}
+                        {% endfor %}
+                    </td>
+                    <td>{{ student.linkedInProfile }}</td>
+                    {% if student.profilePhoto %}
+                        <td><img class="pp-thumb" src="{{ student.profilePhoto }}" alt="profile photo"></td>
+                    {% else %}
+                        <td><span> </span></td>
+                    {% endif %}
+                    <td>
+                        <a href="{{ path('student_show', {'id': student.id}) }}">show</a>
+                        <a href="{{ path('student_edit', {'id': student.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('student_new') }}">Create new</a>
+    </div>
+{% endblock %}

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\SkillType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,6 +15,8 @@ class HomeController extends AbstractController
      */
     public function index(AuthenticationUtils $authenticationUtils): Response
     {
+
+
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user

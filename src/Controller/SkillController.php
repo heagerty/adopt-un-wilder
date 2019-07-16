@@ -5,10 +5,15 @@ namespace App\Controller;
 use App\Entity\Skill;
 use App\Form\SkillType;
 use App\Repository\SkillRepository;
+use App\Repository\StudentRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
+
 
 /**
  * @Route("/skill")
@@ -92,5 +97,34 @@ class SkillController extends AbstractController
         }
 
         return $this->redirectToRoute('skill_index');
+    }
+
+    /**
+     * @Route("/search/", name="skill_search", methods={"POST"})
+     *
+     **/
+
+
+    public function skillSearch(Request $request): Response
+    {
+
+        $data = $request->request->all();
+
+
+            $repository = $this->getDoctrine()->getRepository(Skill::class);
+
+            //$search = $request->request->get('search');
+
+            $skill = $repository->findOneBy([
+                'name' => $data['search'],
+
+            ]);
+            $students = $skill->getStudents();
+
+
+            return $this->render('skill/skill_search.html.twig', [
+                'students' => $students,
+            ]);
+
     }
 }
