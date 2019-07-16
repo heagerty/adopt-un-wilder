@@ -17,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 
 
+
 /**
  * @Route("/skill")
  */
@@ -139,12 +140,15 @@ class SkillController extends AbstractController
     }
 
     /**
-     * @Route("/search/{name}", name="skill_pill", methods={"POST, GET"})
+     * @param string $slug The slugger
      *
+     * @Route("/search/{slug<^[a-z0-9-]+$>}", name="skill_pill")
+     *
+     * @return Response A response instance
      **/
 
 
-    public function skillPill($name): Response
+    public function skillPill(?string $slug): Response
     {
 
 
@@ -153,7 +157,7 @@ class SkillController extends AbstractController
         //$search = $request->request->get('search');
 
         $skill = $repository->findOneBy([
-            'name' => $name,
+            'slug' => $slug,
         ]);
         $skills = $repository->findAll();
 
