@@ -16,15 +16,26 @@
     font-weight: normal;
     src: local('ITC Avant Garde Gothic Std Bold'), url('fonts/ag/itc-avant-garde-gothic-std-bold-589572c7e9955.woff') format('woff');
 }
+.navbar-brand {
+    padding-top: 1rem;
+}
+
+.nav-img{
+    margin-top: -0.5rem;
+}
+
+.nav-title{
+    padding-left: 6px;
+}
+
 .ag-thick {
     font-family: 'ITC Avant Garde Gothic Std Bold', Ariel, sans-serif;
     font-size: 1.3rem;
-
 }
 
 .ag-thin {
     font-family: 'ITC Avant Garde Gothic Std Book', Ariel, sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 
@@ -72,7 +83,7 @@ h1 {
 
     background-color: #8959A8;
     background-image: url("/images/backgrounds/shhh.jpg");
-    height: calc(100% - 92px);
+    height: calc(100% - 95px);
     background-position: left;
     background-repeat: no-repeat;
 
