@@ -10,7 +10,15 @@
 
 
 
-        <h2>Test #4</h2>
+        <h2>Skill Search</h2>
+        <div class=""pills">
+            {% for skill in skills %}
+                <a href="/skill/search/{{ skill }}"><span class="badge badge-pill badge-info">{{ skill }}</span></a>
+            {% endfor %}
+
+
+        </div>
+
         <div class="card-deck student-card-deck">
             {% for student in students %}
                 <div class="card student-card">

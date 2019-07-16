@@ -6,12 +6,14 @@ use App\Entity\Skill;
 use App\Form\SkillType;
 use App\Repository\SkillRepository;
 use App\Repository\StudentRepository;
+use App\Service\Slugify;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 
 
 
@@ -33,7 +35,7 @@ class SkillController extends AbstractController
     /**
      * @Route("/new", name="skill_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Slugify $slugify): Response
     {
         $skill = new Skill();
         $form = $this->createForm(SkillType::class, $skill);
@@ -41,6 +43,10 @@ class SkillController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            $slug = $slugify->generate($skill->getName());
+            $skill->setSlug($slug);
+
             $entityManager->persist($skill);
             $entityManager->flush();
 
@@ -119,12 +125,45 @@ class SkillController extends AbstractController
                 'name' => $data['search'],
 
             ]);
+
+            $skills = $repository->findAll();
+
             $students = $skill->getStudents();
 
 
             return $this->render('skill/skill_search.html.twig', [
                 'students' => $students,
+                'skills' => $skills,
             ]);
+
+    }
+
+    /**
+     * @Route("/search/{name}", name="skill_pill", methods={"POST, GET"})
+     *
+     **/
+
+
+    public function skillPill($name): Response
+    {
+
+
+        $repository = $this->getDoctrine()->getRepository(Skill::class);
+
+        //$search = $request->request->get('search');
+
+        $skill = $repository->findOneBy([
+            'name' => $name,
+        ]);
+        $skills = $repository->findAll();
+
+        $students = $skill->getStudents();
+
+
+        return $this->render('skill/skill_search.html.twig', [
+            'students' => $students,
+            'skills' => $skills,
+        ]);
 
     }
 }
