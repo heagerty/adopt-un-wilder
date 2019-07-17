@@ -122,6 +122,32 @@ class SkillController extends AbstractController
             $skillRepository = $this->getDoctrine()->getRepository(Skill::class);
             $studentRepository = $this->getDoctrine()->getRepository(Student::class);
 
+        //TODO add 'smart search' feature to search.
+
+        //sucker searches:
+        if (strtolower($data['search']) == 'that fucking american') {
+            $student = $studentRepository->findOneBy([
+                'firstname' => 'casey',
+            ]);
+
+            $id = $student->getId();
+            return $this->redirectToRoute('student_show', [
+                'id' => $id,
+            ]);
+        }
+
+        if (strtolower($data['search']) == 'party girl') {
+            $student = $studentRepository->findOneBy([
+                'firstname' => 'Francesca',
+            ]);
+
+            $id = $student->getId();
+            return $this->redirectToRoute('student_show', [
+                'id' => $id,
+            ]);
+        }
+
+
             //test if search is a skill:
         if ($skillRepository->findOneBy(['name' => $data['search']])) {
             $skill = $skillRepository->findOneBy([
