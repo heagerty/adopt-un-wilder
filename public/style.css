@@ -164,3 +164,10 @@ i {
     text-align: center;
     margin-top: 4rem;
 }
+
+
+
+.big-pill {
+    font-size: 1.2rem;
+    margin: 2px 1px;
+}

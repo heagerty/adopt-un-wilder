@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
     html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 </style>
@@ -27,12 +27,12 @@
             <!-- Profile -->
             <div class="w3-card w3-round w3-white">
                 <div class="w3-container">
-                    <h4 class="w3-center">My Profile</h4>
-                    <p class="w3-center"><img src="/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+                    <h4 class="w3-center">{{ student.firstname }} {{ student.lastname }}</h4>
+                    <p class="w3-center"><img src="{{ student.profilePhoto }}" class="w4-circle" style="height:250px; width:250px" alt="Avatar"></p>
                     <hr>
-                    <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
-                    <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
-                    <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+                    <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>WCS Orléans</p>
+                    <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{ student.city }}</p>
+                    <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> {{ student.dateOfBirth | date(' F j, Y')  }}</p>
                 </div>
             </div>
             <br>
@@ -53,22 +53,22 @@
                         <div class="w3-row-padding">
                             <br>
                             <div class="w3-half">
-                                <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">
+                                <img src="" style="width:100%" class="w3-margin-bottom">
                             </div>
                             <div class="w3-half">
-                                <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+                                <img src="" style="width:100%" class="w3-margin-bottom">
                             </div>
                             <div class="w3-half">
-                                <img src="/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">
+                                <img src="" style="width:100%" class="w3-margin-bottom">
                             </div>
                             <div class="w3-half">
-                                <img src="/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">
+                                <img src="" style="width:100%" class="w3-margin-bottom">
                             </div>
                             <div class="w3-half">
-                                <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+                                <img src="" style="width:100%" class="w3-margin-bottom">
                             </div>
                             <div class="w3-half">
-                                <img src="/w3images/snow.jpg" style="width:100%" class="w3-margin-bottom">
+                                <img src="" style="width:100%" class="w3-margin-bottom">
                             </div>
                         </div>
                     </div>
@@ -97,20 +97,62 @@
             </div>
             <br>
 
-            <!-- Alert Box -->
-            <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
-        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
-          <i class="fa fa-remove"></i>
-        </span>
-                <p><strong>Hey!</strong></p>
-                <p>People are looking at your profile. Find out who.</p>
-            </div>
-
-            <!-- End Left Column -->
         </div>
+
+
 
         <!-- Middle Column -->
         <div class="w3-col m7">
+
+
+
+
+            <div class="w3-row-padding">
+                <div class="w3-col m12">
+                    <div class="w3-card w3-round w3-white">
+                        <div class="w3-container w3-padding">
+                            <h5 class="w3-opacity">{{ student.tagline }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+
+                <div class="row pb-4 pl-4">
+
+                    <div class="w3-half">
+                        <h4>Mes compétences</h4>
+                        <p>
+                            {% for skill in student.skills %}
+                                <span class="badge badge-pill badge-info big-pill">{{ skill }}</span>
+                            {% endfor %}
+                        </p>
+
+                    </div>
+
+                    <div class="w3-half">
+                        <h4>Je voudrais apprendre</h4>
+                        <p>
+                            {% for skill in student.skillsToLearn %}
+                                <span class="badge badge-pill badge-success big-pill">{{ skill }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+            <div class="w3-container w3-card w3-white w3-round w3-margin pb-4"><br>
+                <h4>A propos de moi...</h4>
+                <hr class="w3-clear">
+                <p>{{ student.about }}</p>
+
+            </div>
+
 
             <div class="w3-row-padding">
                 <div class="w3-col m12">
@@ -124,42 +166,21 @@
                 </div>
             </div>
 
+
             <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-                <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                <img src="" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
                 <span class="w3-right w3-opacity">1 min</span>
                 <h4>John Doe</h4><br>
                 <hr class="w3-clear">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 <div class="w3-row-padding" style="margin:0 -16px">
                     <div class="w3-half">
-                        <img src="/w3images/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+                        <img src="" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
                     </div>
                     <div class="w3-half">
-                        <img src="/w3images/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
+                        <img src="" style="width:100%" alt="Nature" class="w3-margin-bottom">
                     </div>
                 </div>
-                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
-                <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
-            </div>
-
-            <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-                <img src="/w3images/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-                <span class="w3-right w3-opacity">16 min</span>
-                <h4>Jane Doe</h4><br>
-                <hr class="w3-clear">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
-                <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
-            </div>
-
-            <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-                <img src="/w3images/avatar6.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-                <span class="w3-right w3-opacity">32 min</span>
-                <h4>Angie Jane</h4><br>
-                <hr class="w3-clear">
-                <p>Have you seen this?</p>
-                <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
                 <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
             </div>
@@ -172,7 +193,7 @@
             <div class="w3-card w3-round w3-white w3-center">
                 <div class="w3-container">
                     <p>Upcoming Events:</p>
-                    <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
+                    <img src="" alt="Forest" style="width:100%;">
                     <p><strong>Holiday</strong></p>
                     <p>Friday 15:00</p>
                     <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
@@ -183,7 +204,7 @@
             <div class="w3-card w3-round w3-white w3-center">
                 <div class="w3-container">
                     <p>Friend Request</p>
-                    <img src="/w3images/avatar6.png" alt="Avatar" style="width:50%"><br>
+                    <img src="" alt="Avatar" style="width:50%"><br>
                     <span>Jane Doe</span>
                     <div class="w3-row w3-opacity">
                         <div class="w3-half">
@@ -217,14 +238,6 @@
 <br>
 
 
-<!-- Footer -->
-<footer class="w3-container w3-theme-d3 w3-padding-16">
-    <h5>Footer</h5>
-</footer>
-
-<footer class="w3-container w3-theme-d5">
-    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-</footer>
 
 {% endblock %}
 
