@@ -122,4 +122,33 @@ class StudentController extends AbstractController
 
         return $this->redirectToRoute('student_index');
     }
+
+
+    /**
+     * @Route("/showtest/{id}", name="test_show", methods={"GET"})
+     */
+    public function showtest(Student $student, Codewars $codewars): Response
+    {
+
+        $kata = [];
+        $honor = 0;
+
+        if (null == ($student->getCodewarsId())) {
+            return $this->render('student/show.html.twig', [
+                'student' => $student,
+                'honor' => 0,
+                //'kata' => [],
+            ]);
+        }
+        $codewarsId = $student->getCodewarsId();
+        $honor = $codewars->getHonor($codewarsId);
+        //$kata = $codewars->getKata($codewarsId);
+
+
+        return $this->render('student/student_profile.html.twig', [
+            'student' => $student,
+            'honor' => $honor,
+            //'kata' => $kata,
+        ]);
+    }
 }
