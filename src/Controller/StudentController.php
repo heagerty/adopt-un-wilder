@@ -130,24 +130,28 @@ class StudentController extends AbstractController
     public function showtest(Student $student, Codewars $codewars): Response
     {
 
+
         $kata = [];
         $honor = 0;
 
         if (null == ($student->getCodewarsId())) {
-            return $this->render('student/show.html.twig', [
+            return $this->render('student/student_profile.html.twig', [
                 'student' => $student,
                 'honor' => 0,
                 //'kata' => [],
+                'codewarsLanguages' => [],
             ]);
         }
-        //$codewarsId = $student->getCodewarsId();
+        $codewarsId = $student->getCodewarsId();
         //$honor = $codewars->getHonor($codewarsId);
         //$kata = $codewars->getKata($codewarsId);
+        $languages = $codewars->getLanguages($codewarsId);
 
 
         return $this->render('student/student_profile.html.twig', [
             'student' => $student,
             'honor' => $honor,
+            'codewarsLanguages' => $languages,
             //'kata' => $kata,
         ]);
     }

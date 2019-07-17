@@ -171,3 +171,13 @@ i {
     font-size: 1.2rem;
     margin: 2px 1px;
 }
+
+.cw-profile {
+    width: 18%;
+    height: auto;
+}
+
+th, td {
+    padding: 25px;
+    text-align: center;
+}

@@ -97,6 +97,16 @@ class Student implements UserInterface
      */
     private $githubId;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isLookingForInternship;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isLookingForJob;
+
     public function __construct()
     {
         $this->skills = new ArrayCollection();
@@ -351,6 +361,30 @@ class Student implements UserInterface
     public function setGithubId(?string $githubId): self
     {
         $this->githubId = $githubId;
+
+        return $this;
+    }
+
+    public function getIsLookingForInternship(): ?bool
+    {
+        return $this->isLookingForInternship;
+    }
+
+    public function setIsLookingForInternship(bool $isLookingForInternship): self
+    {
+        $this->isLookingForInternship = $isLookingForInternship;
+
+        return $this;
+    }
+
+    public function getIsLookingForJob(): ?bool
+    {
+        return $this->isLookingForJob;
+    }
+
+    public function setIsLookingForJob(bool $isLookingForJob): self
+    {
+        $this->isLookingForJob = $isLookingForJob;
 
         return $this;
     }

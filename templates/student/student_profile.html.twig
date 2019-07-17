@@ -27,7 +27,7 @@
             <!-- Profile -->
             <div class="w3-card w3-round w3-white">
                 <div class="w3-container">
-                    <h4 class="w3-center">{{ student.firstname }} {{ student.lastname }}</h4>
+                    <h2 class="w3-center">{{ student.firstname }} {{ student.lastname }}</h2>
                     <p class="w3-center"><img src="{{ student.profilePhoto }}" class="w4-circle" style="height:250px; width:250px" alt="Avatar"></p>
                     <hr>
                     <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>WCS Orléans</p>
@@ -36,6 +36,28 @@
                 </div>
             </div>
             <br>
+
+            <div class="w3-card w3-round w3-white w3-hide-small">
+                <div class="w3-container">
+                    <h5 class="pb-3 pt-3">Contactez-moi à propos...</h5>
+                    {%   if student.isLookingForInternship == true %}
+                    <p style="vertical-align: baseline;"> d'un stage<i class="fas fa-toggle-on fa-fw w3-margin-right w3-text-theme w3-xxlarge" style="vertical-align: middle;"></i></p>
+                    {% else %}
+                    <p style="vertical-align: baseline;"> d'un stage<i class="fas fa-toggle-off fa-fw w3-margin-right w3-text-theme w3-xxlarge" style="vertical-align: middle;"></i></p>
+                    {% endif %}
+                    <p>
+
+                    {%   if student.isLookingForJob == true %}
+                    <p style="vertical-align: baseline;"> d'un CDI<i class="fas fa-toggle-on fa-fw w3-margin-right ml-2 w3-text-theme w3-xxlarge" style="vertical-align: middle"></i></p>
+                    {% else %}
+                    <p style="vertical-align: baseline;"> d'un CDI<i class="fas fa-toggle-off fa-fw w3-margin-right ml-2 w3-text-theme w3-xxlarge" style="vertical-align: middle"></i></p>
+                    {% endif %}
+
+
+                </div>
+            </div>
+            <br>
+
 
             <!-- Accordion -->
             <div class="w3-card w3-round">
@@ -52,24 +74,7 @@
                     <div id="Demo3" class="w3-hide w3-container">
                         <div class="w3-row-padding">
                             <br>
-                            <div class="w3-half">
-                                <img src="" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="" style="width:100%" class="w3-margin-bottom">
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -153,6 +158,24 @@
 
             </div>
 
+            <div class="w3-container w3-card w3-white w3-round w3-margin pb-4"><br>
+                <h4>Codewars</h4>
+                <hr class="w3-clear">
+                <table>
+                    <tr>
+                {% for language, languageArray in codewarsLanguages %}
+                <th>{{ language|capitalize }}</th>
+                {% endfor %}
+                    </tr>
+                    <tr>
+                    {% for language, languageArray in codewarsLanguages %}
+                        <td>{{ languageArray.score }}</td>
+                    {% endfor %}
+                    </tr>
+                </table>
+
+            </div>
+
 
             <div class="w3-row-padding">
                 <div class="w3-col m12">
@@ -189,7 +212,36 @@
         </div>
 
         <!-- Right Column -->
+
+
         <div class="w3-col m2">
+
+
+
+            <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
+                <p><a href=""><i class="fa fa-envelope w3-xxlarge"></i></a></p>
+            </div>
+            <br>
+
+            <div class="w3-card w3-round w3-white w3-padding-32 w3-center ">
+                <p><a href=""><i class="fab fa-linkedin-in w3-xxlarge"></i></a></p>
+            </div>
+            <br>
+
+            <div class="w3-card w3-round w3-white w3-padding-32 w3-center ">
+                <p><a href=""><i class="fab fa-github w3-xxlarge"></i></a></p>
+            </div>
+            <br>
+
+            <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
+                <p><a href=""><img src="/images/icons-logos/codewars_bw.png" class="cw-profile"></a></p>
+            </div>
+            <br>
+
+
+
+
+
             <div class="w3-card w3-round w3-white w3-center">
                 <div class="w3-container">
                     <p>Upcoming Events:</p>
