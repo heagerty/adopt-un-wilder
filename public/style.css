@@ -17,6 +17,13 @@
     src: local('ITC Avant Garde Gothic Std Bold'), url('fonts/ag/itc-avant-garde-gothic-std-bold-589572c7e9955.woff') format('woff');
 }
 
+@font-face {
+    font-family: 'Camingo Code Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Camingo Code Bold'), url('fonts/camingocode/CamingoCode-Bold.ttf') format('ttf');
+}
+
 .navbar-brand {
     padding-top: 1rem;
 }
@@ -177,7 +184,31 @@ i {
     height: auto;
 }
 
+
 th, td {
     padding: 25px;
     text-align: center;
+}
+
+#student_skills div, #student_skillsToLearn div {
+     width: 33%;
+    display:inline;
+    float: left;
+}
+
+.heading-padding {
+    margin-bottom: 3rem;
+}
+
+.wcs-logo-profile {
+    width:80%;
+    padding-bottom: 2rem;
+}
+
+.honor {
+    font-family: 'Camingo Code Bold', Ariel, sans-serif;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }

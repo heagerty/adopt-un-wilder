@@ -143,7 +143,7 @@ class StudentController extends AbstractController
             ]);
         }
         $codewarsId = $student->getCodewarsId();
-        //$honor = $codewars->getHonor($codewarsId);
+        $honor = $codewars->getHonor($codewarsId);
         //$kata = $codewars->getKata($codewarsId);
         $languages = $codewars->getLanguages($codewarsId);
 
