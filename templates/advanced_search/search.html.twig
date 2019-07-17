@@ -59,7 +59,7 @@
                         <ul class="threecolumns">
                             {% for skill in skills %}
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="{{ skill }}" id="{{ skill }}">
+                                                <input class="form-check-input" type="checkbox" name="{{ skill.slug }}" id="{{ skill }}">
                                                 <label class="form-check-label" for="{{ skill }}">
                                                     {{ skill }}
                                                 </label>

@@ -52,6 +52,12 @@ class AdvancedSearchController extends AbstractController
             }
         }
 
+        if (!in_array('Orléans', $campuses) && $campuses != []) {
+            return $this->render('advanced_search/results.html.twig', [
+                'rankedStudents' => [],
+            ]);
+        }
+
         $skills = array_diff($searchTerms, $campuses);
 
         //var_dump($skills);
@@ -65,17 +71,27 @@ class AdvancedSearchController extends AbstractController
         $studentRank = [];
 
         foreach($allStudents as $student) {
+
+            //skills I have
             $username = $student->getUsername();
             $mySkills = $student->getSkills();
+            $mySkillsToLearn = $student->getSkillsToLearn();
+
             $skillsArray = [];
             foreach ($mySkills as $mySkill) {
-                $skillsArray[] = $mySkill->getName();
+                $skillsArray[] = $mySkill->getSlug();  //was getName()
+            }
+
+            $skillsToLearnArray = [];
+            foreach ($mySkillsToLearn as $mySkill) {
+                $skillsToLearnArray[] = $mySkill->getSlug();   //was getName()
             }
 
             $matchingSkills = array_intersect($skills, $skillsArray);
+            $matchingSkillsToLearn = array_intersect($skills, $skillsToLearnArray);
 
+            $skillCount = count($matchingSkills) + (count($matchingSkillsToLearn)/2);
 
-            $skillCount = count($matchingSkills);
             if ($skillCount > 0) {
                 $studentRank[$username] = $skillCount;
             }
@@ -83,8 +99,6 @@ class AdvancedSearchController extends AbstractController
 
          arsort($studentRank);
 
-
-        //TODO take ranked list of student usernames and reconvert them into students to send to the view.
 
         foreach ($studentRank as $key => $value) {
             $studentFromRank = $studentRepository->findBy([
