@@ -16,15 +16,34 @@
     font-weight: normal;
     src: local('ITC Avant Garde Gothic Std Bold'), url('fonts/ag/itc-avant-garde-gothic-std-bold-589572c7e9955.woff') format('woff');
 }
+
+@font-face {
+    font-family: 'Camingo Code Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Camingo Code Bold'), url('fonts/camingocode/CamingoCode-Bold.ttf') format('ttf');
+}
+
+.navbar-brand {
+    padding-top: 1rem;
+}
+
+.nav-img{
+    margin-top: -0.5rem;
+}
+
+.nav-title{
+    padding-left: 6px;
+}
+
 .ag-thick {
     font-family: 'ITC Avant Garde Gothic Std Bold', Ariel, sans-serif;
     font-size: 1.3rem;
-
 }
 
 .ag-thin {
     font-family: 'ITC Avant Garde Gothic Std Book', Ariel, sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 
@@ -72,7 +91,7 @@ h1 {
 
     background-color: #8959A8;
     background-image: url("/images/backgrounds/shhh.jpg");
-    height: calc(100% - 96px);
+    height: calc(100% - 95px);
     background-position: left;
     background-repeat: no-repeat;
 
@@ -112,6 +131,10 @@ h1 {
     margin: 2rem auto;
 }
 
+i {
+    padding: 0 1rem;
+}
+
 
 .delete_form {
     display: inline;
@@ -125,3 +148,87 @@ h1 {
     height: 15%;
     width: 15%;
 }
+
+.cw-icon {
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+}
+
+
+
+/* Advanced search */
+
+.threecolumns {
+    column-count: 3;
+}
+
+.needspaddingontop {
+    margin-top: 6rem;
+}
+
+.centered {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.badge1 {
+    position:relative;
+}
+.badge1[data-badge]:after {
+    content:attr(data-badge);
+    position:absolute;
+    top:-20px;
+    right:-10px;
+    font-size:1em;
+    background: lightslategrey;
+    color:white;
+    width: 3rem;
+    height: 3rem;
+    text-align:center;
+    line-height: 3rem;
+    border-radius:50%;
+    box-shadow:0 0 1px #333;
+}
+
+
+
+.big-pill {
+    font-size: 1.2rem;
+    margin: 2px 1px;
+}
+
+.cw-profile {
+    width: 18%;
+    height: auto;
+}
+
+
+th, td {
+    padding: 25px;
+    text-align: center;
+}
+
+#student_skills div, #student_skillsToLearn div {
+     width: 33%;
+    display:inline;
+    float: left;
+}
+
+.heading-padding {
+    margin-bottom: 3rem;
+}
+
+.wcs-logo-profile {
+    width:80%;
+    padding-bottom: 2rem;
+}
+
+.honor {
+    font-family: 'Camingo Code Bold', Ariel, sans-serif;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+

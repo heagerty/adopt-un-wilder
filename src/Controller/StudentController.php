@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Student;
 use App\Form\StudentType;
+use App\Repository\SkillRepository;
 use App\Repository\StudentRepository;
+use App\Service\Codewars;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,10 +30,11 @@ class StudentController extends AbstractController
     /**
      * @Route("/", name="students", methods={"GET"})
      */
-    public function publicIndex(StudentRepository $studentRepository): Response
+    public function publicIndex(StudentRepository $studentRepository, SkillRepository $skillRepository): Response
     {
-        return $this->render('student/students.html.twig', [
+        return $this->render('skill/skill_search.html.twig', [
             'students' => $studentRepository->findAll(),
+            'skills' => $skillRepository->findAll(),
         ]);
     }
 
@@ -61,10 +64,28 @@ class StudentController extends AbstractController
     /**
      * @Route("/{id}", name="student_show", methods={"GET"})
      */
-    public function show(Student $student): Response
+    public function show(Student $student, Codewars $codewars): Response
     {
+
+        $kata = [];
+        $honor = 0;
+
+        if (null == ($student->getCodewarsId())) {
+            return $this->render('student/show.html.twig', [
+                'student' => $student,
+                'honor' => 0,
+                //'kata' => [],
+            ]);
+        }
+        $codewarsId = $student->getCodewarsId();
+        $honor = $codewars->getHonor($codewarsId);
+        //$kata = $codewars->getKata($codewarsId);
+
+
         return $this->render('student/show.html.twig', [
             'student' => $student,
+            'honor' => $honor,
+            //'kata' => $kata,
         ]);
     }
 
@@ -102,5 +123,38 @@ class StudentController extends AbstractController
         }
 
         return $this->redirectToRoute('student_index');
+    }
+
+
+    /**
+     * @Route("/profile/{id}", name="profile_show", methods={"GET"})
+     */
+    public function showtest(Student $student, Codewars $codewars): Response
+    {
+
+
+        $kata = [];
+        $honor = 0;
+
+        if (null == ($student->getCodewarsId())) {
+            return $this->render('student/student_profile.html.twig', [
+                'student' => $student,
+                'honor' => 0,
+                //'kata' => [],
+                'codewarsLanguages' => [],
+            ]);
+        }
+        $codewarsId = $student->getCodewarsId();
+        $honor = $codewars->getHonor($codewarsId);
+        //$kata = $codewars->getKata($codewarsId);
+        $languages = $codewars->getLanguages($codewarsId);
+
+
+        return $this->render('student/student_profile.html.twig', [
+            'student' => $student,
+            'honor' => $honor,
+            'codewarsLanguages' => $languages,
+            //'kata' => $kata,
+        ]);
     }
 }

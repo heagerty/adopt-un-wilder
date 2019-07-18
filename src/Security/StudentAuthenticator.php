@@ -91,7 +91,7 @@ class StudentAuthenticator extends AbstractFormLoginAuthenticator
 
         $user = $token->getUser();
         $id = $user->getId();
-        return new RedirectResponse($this->urlGenerator->generate('student_show', ['id' => $id]));
+        return new RedirectResponse($this->urlGenerator->generate('profile_show', ['id' => $id]));
     }
 
     protected function getLoginUrl()
