@@ -5,12 +5,12 @@
 
 {% block body %}
     <div class="container-fluid">
-        <h1>Students</h1>
+        <h1>Élèves</h1>
 
 
 
 
-        <h2>Skill Search</h2>
+        <h2>Filtrer par compétence</h2>
         <div class=""pills">
             {% for skill in skills %}
                 <a href="/skill/search/{{ skill.slug }}"><span class="badge badge-pill badge-info">{{ skill }}</span></a>

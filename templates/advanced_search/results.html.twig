@@ -8,7 +8,7 @@
 
 
 <div class="container-fluid">
-    <h1>Students</h1>
+    <h1>Élèves</h1>
 
 
 
@@ -19,7 +19,7 @@
             {% set student = array.0 %}
 
             <div class="card student-card badge1" data-badge="{{ percent }}%">
-                <a href="/students/{{ student.id }}"><img src="{{ student.profilePhoto }}" class="card-img-top" alt="profile picture"></a>
+                <a href="/students/profile/{{ student.id }}"><img src="{{ student.profilePhoto }}" class="card-img-top" alt="profile picture"></a>
                 <div class="card-body">
                     <h5 class="card-title">{{ student.firstname }} {{ student.lastname }}</h5>
                     <p class="card-text">{{ student.tagline }}</p>
