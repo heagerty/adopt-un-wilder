@@ -105,9 +105,17 @@
             <div class="w3-card w3-round w3-white w3-hide-small mb-0">
                 <div class="w3-container">
                         <a href="/students/" type="button" class="w3-button w3-theme mt-2 mb-2 mr-2">Back</a>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+
+                    {% if app.user == student %}
+
+
                         <a href="/students/{{ student.id }}/edit"type="button" class="w3-button w3-theme pl-0 mt-2 mb-2 mr-2 ml-2"><i class="fa fa-pencil"></i>Edit</a>
                         <a type="button" class="w3-button w3-theme pl-0 mt-2 mb-2 ml-2"><i class="fa fa-trash"
                            onclick="return confirm('Are you sure you want to delete this item?');"></i>Delete</a>
+                    {% endif %}
+                    {% endif %}
                 </div>
             </div>
 

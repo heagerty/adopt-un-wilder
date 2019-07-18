@@ -91,9 +91,16 @@ class StudentController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="student_edit", methods={"GET","POST"})
+     *
      */
     public function edit(Request $request, Student $student): Response
     {
+
+        $user = $this->getUser();
+        if ($user != $student) {
+            return $this->redirectToRoute('app_login');
+        }
+
         $form = $this->createForm(StudentType::class, $student);
         $form->handleRequest($request);
 
