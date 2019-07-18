@@ -12,8 +12,17 @@
 
         <h2>Filtrer par compétence</h2>
         <div class=""pills">
+        {% if searchedSkill is defined  %}
+        <a href="/students/"><span class="badge badge-pill badge-light">Tout</span></a>
+        {% else %}
+        <a href="/students/"><span class="badge badge-pill badge-info">Tout</span></a>
+        {% endif %}
             {% for skill in skills %}
-                <a href="/skill/search/{{ skill.slug }}"><span class="badge badge-pill badge-info">{{ skill }}</span></a>
+                {% if searchedSkill is defined and searchedSkill == skill %}
+                    <a href="/skill/search/{{ skill.slug }}"><span class="badge badge-pill badge-info">{{ skill }}</span></a>
+                 {% else %}
+                     <a href="/skill/search/{{ skill.slug }}"><span class="badge badge-pill badge-light">{{ skill }}</span></a>
+                {% endif %}
             {% endfor %}
         </div>
 

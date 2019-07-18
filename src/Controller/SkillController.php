@@ -124,7 +124,7 @@ class SkillController extends AbstractController
 
         $skills = $skillRepository->findAll();
 
-        //TODO add 'smart search' feature to search.  ALWAYS display list (don't go to profile)
+
         //TODO rewrite search as 'OR' to return both students that know Git and Mary Git
 
         //sucker searches:
@@ -268,6 +268,7 @@ class SkillController extends AbstractController
             'students' => $students,
             'interestedStudents' => $interestedStudents,
             'skills' => $skills,
+            'searchedSkill' => $skill,
         ]);
 
     }
