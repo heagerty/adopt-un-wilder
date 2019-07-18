@@ -232,3 +232,23 @@ th, td {
     margin-bottom: 0;
 }
 
+.card-container {
+    width: 90%;
+}
+
+.as-h3 {
+    font-size: x-large;
+    position: relative;
+    right: 2rem;
+}
+
+.table-less-spacing {
+    padding: 0;
+    margin: 0;
+    padding-left: 1rem;
+}
+
+.less-bottom-padding {
+    font-weight: bold;
+    padding:  0;
+}

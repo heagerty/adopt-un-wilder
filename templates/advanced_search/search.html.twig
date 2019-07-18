@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdvancedSearchController!{% endblock %}
+{% block title %}Recherche avancée{% endblock %}
 
 {% block body %}
-<h1>Advanced search</h1>
+<h1>Recherche avancée</h1>
     <div class="container">
 
-        <form class="form my-2 my-lg-0" action="{{ path('search_results') }}" method="post">
+        <form class="form my-2 my-lg-0" action="{{ path('search_results') }}" method="get">
 
 
 
@@ -54,7 +54,7 @@
 
             <!-- Skills -->
                 <div class="form-group row needspaddingontop">
-                    <div class="col-sm-2"><h3>Skills:</h3></div>
+                    <div class="col-sm-2"><h3 class="as-h3">Compétences :</h3></div>
                     <div class="col-sm-10">
                         <ul class="threecolumns">
                             {% for skill in skills %}
@@ -74,7 +74,7 @@
             <!-- Campuses -->
 
             <div class="form-group row needspaddingontop">
-                <div class="col-sm-2"><h3>Campuses:</h3></div>
+                <div class="col-sm-2"><h3 class="as-h3">Campus :</h3></div>
                 <div class="col-sm-10">
                     <ul class="threecolumns">
                         {% for campus in campuses %}

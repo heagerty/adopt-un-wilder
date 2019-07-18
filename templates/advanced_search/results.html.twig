@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdvancedSearchController!{% endblock %}
+{% block title %}Recherche avancée - resultats{% endblock %}
 
 {% block body %}
 
@@ -11,7 +11,35 @@
     <h1>Élèves</h1>
 
 
+    <!--
+    <p> Campus :
+        {% for campus in campuses %}
+       <span class="badge badge-pill badge-light">{{ campus }}</span>
+        {% endfor %}
+        Competences :
+        {% for skill in skills %}
+           <span class="badge badge-pill badge-light">{{ skill|capitalize }}</span>
+        {% endfor %}
 
+    </p>   -->
+
+    <table>
+        <tr>
+            <td class="less-bottom-padding">Campus :</td>
+            <td class="table-less-spacing"> {% for campus in campuses %}
+                    <span class="badge badge-pill badge-light">{{ campus }}</span>
+                {% endfor %}</td>
+        </tr>
+        <tr >
+            <td class="less-bottom-padding">Competences :</td>
+            <td class="table-less-spacing">        {% for skill in skills %}
+                    <span class="badge badge-pill badge-light">{{ skill|capitalize }}</span>
+                {% endfor %}</td>
+
+        </tr>
+
+
+    </table>
 
     <div class="card-deck student-card-deck">
         {% for array in rankedStudents %}

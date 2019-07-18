@@ -33,7 +33,7 @@ class AdvancedSearchController extends AbstractController
 
 
     /**
-     * @Route("/advanced/search/results", name="search_results", methods={"POST"})
+     * @Route("/advanced/search/results", name="search_results", methods={"GET"})
      *
      **/
 
@@ -41,7 +41,8 @@ class AdvancedSearchController extends AbstractController
     public function skillSearch(Request $request): Response
     {
 
-        $data = $request->request->all();
+        //$data = $request->request->all();  // POST
+        $data = $request->query->all();    // GET
         $searchTerms = array_keys($data);
 
         $campuses = [];
@@ -59,6 +60,7 @@ class AdvancedSearchController extends AbstractController
         }
 
         $skills = array_diff($searchTerms, $campuses);
+
 
         //var_dump($skills);
         //var_dump($campuses);
@@ -111,6 +113,7 @@ class AdvancedSearchController extends AbstractController
                 'username' => $key,
             ]);
 
+;
 
             $studentResults[] = [$studentFromRank[0], $value];
 
@@ -121,6 +124,8 @@ class AdvancedSearchController extends AbstractController
 
 
         return $this->render('advanced_search/results.html.twig', [
+            'campuses' => $campuses,
+            'skills' => $skills,
             'rankedStudents' => $studentResults,
         ]);
 
