@@ -89,7 +89,7 @@ h1 {
         background-image: url("/images/backgrounds/man-laptop.jpg");
     */
 
-    background-color: #8959A8;
+    /*background-color: #8959A8; */
     background-image: url("/images/backgrounds/shhh.jpg");
     height: calc(100% - 95px);
     background-position: left;

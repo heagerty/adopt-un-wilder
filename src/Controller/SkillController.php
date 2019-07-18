@@ -171,7 +171,7 @@ class SkillController extends AbstractController
             ]);
         }
 
-        //TODO combine following searches to one result
+
 
             //test if search is a skill:
         if ($skillRepository->findOneBy(['name' => $data['search']])) {
@@ -179,7 +179,7 @@ class SkillController extends AbstractController
                 'name' => $data['search'],
             ]);
 
-            $skills = $skillRepository->findAll();
+
             $studentsBySkill = $skill->getStudents();
 
 
@@ -206,10 +206,31 @@ class SkillController extends AbstractController
         }
 
 
+        $students = $studentRepository->findAll();
 
-            $skills = $skillRepository->findAll();
-            $students = $studentRepository->findAll();
-            $studentsFound = [];
+        $studentsFound = [];
+
+
+        //test if search is a student - full name:
+        foreach($students as $studentFullName) {
+            $firstname = $studentFullName->getFirstname();
+            $lastname = $studentFullName->getLastname();
+            $fullname1 = strtolower($firstname.' '.$lastname);
+            $fullname2 = strtolower($lastname.' '.$firstname);
+
+            $lcSearch = strtolower($data['search']);
+
+            if ($lcSearch == $fullname1 || $lcSearch == $fullname2 ) {
+                $studentsFound[] = $studentFullName;
+            }
+
+        }
+
+
+
+
+
+            //$studentsFound = [];
 
             foreach ($students as $student) {
                 if(isset($studentsBySkill) && $studentsBySkill->contains($student)) {
