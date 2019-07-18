@@ -50,6 +50,39 @@
         </form>
 
     </div>
+
+
+    {% if is_granted('ROLE_USER') %}
+        <span class="nav-item dropdown">
+        <a class="nav-link  navbar-brand navbar-shopping-a " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="/images/icons-logos/combo3.png" width="50" height="50" class="d-inline-block align-top nav-img nav-img2" alt="">
+            <span class="nav-user">{{ app.user.username }}</span>
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/students/profile/{{ app.user.id }}">Voir mon profil</a>
+            <a class="dropdown-item" href="/students/{{ app.user.id }}/edit">Modifier mon profil</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/logout">Deconnexion</a>
+        </div>
+    </span>
+
+    {% else %}
+        <span class="nav-item dropdown">
+        <a class="nav-link  navbar-brand navbar-shopping-a " href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="/images/icons-logos/combo3.png" width="50" height="50" class="d-inline-block align-top nav-img nav-img2" alt="">
+            <span class="nav-user">Login</span>
+        </a>
+
+
+    </span>
+    {% endif %}
+
+
+
+
+
+
 </nav>
 
 
