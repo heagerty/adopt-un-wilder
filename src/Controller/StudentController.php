@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Student;
 use App\Form\StudentType;
+use App\Repository\SkillRepository;
 use App\Repository\StudentRepository;
 use App\Service\Codewars;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -29,10 +30,11 @@ class StudentController extends AbstractController
     /**
      * @Route("/", name="students", methods={"GET"})
      */
-    public function publicIndex(StudentRepository $studentRepository): Response
+    public function publicIndex(StudentRepository $studentRepository, SkillRepository $skillRepository): Response
     {
-        return $this->render('student/students.html.twig', [
+        return $this->render('skill/skill_search.html.twig', [
             'students' => $studentRepository->findAll(),
+            'skills' => $skillRepository->findAll(),
         ]);
     }
 
@@ -125,7 +127,7 @@ class StudentController extends AbstractController
 
 
     /**
-     * @Route("/showtest/{id}", name="test_show", methods={"GET"})
+     * @Route("/profile/{id}", name="profile_show", methods={"GET"})
      */
     public function showtest(Student $student, Codewars $codewars): Response
     {

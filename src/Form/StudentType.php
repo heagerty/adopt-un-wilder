@@ -23,6 +23,8 @@ class StudentType extends AbstractType
             ->add('linkedInProfile')
             ->add('githubId')
             ->add('codewarsId')
+            ->add('isLookingForInternship')
+            ->add('isLookingForJob')
             ->add('city')
             ->add('username')
             ->add('password')

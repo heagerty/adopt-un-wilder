@@ -122,31 +122,56 @@ class SkillController extends AbstractController
             $skillRepository = $this->getDoctrine()->getRepository(Skill::class);
             $studentRepository = $this->getDoctrine()->getRepository(Student::class);
 
-        //TODO add 'smart search' feature to search.
+        $skills = $skillRepository->findAll();
+
+        //TODO add 'smart search' feature to search.  ALWAYS display list (don't go to profile)
+        //TODO rewrite search as 'OR' to return both students that know Git and Mary Git
 
         //sucker searches:
-        if (strtolower($data['search']) == 'that fucking american') {
+
+        $lowerSearch = 'x '.strtolower($data['search']);
+
+
+        if (strpos($lowerSearch, 'american') != 0) {
             $student = $studentRepository->findOneBy([
                 'firstname' => 'casey',
             ]);
 
-            $id = $student->getId();
-            return $this->redirectToRoute('student_show', [
-                'id' => $id,
+            $students[] = $student;
+
+            return $this->render('skill/skill_search.html.twig', [
+                'students' => $students,
+                'skills' => $skills,
             ]);
         }
 
-        if (strtolower($data['search']) == 'party girl') {
+        if (strpos($lowerSearch, 'girl') != 0) {
             $student = $studentRepository->findOneBy([
-                'firstname' => 'Francesca',
+                'firstname' => 'francesca',
             ]);
 
-            $id = $student->getId();
-            return $this->redirectToRoute('student_show', [
-                'id' => $id,
+            $students[] = $student;
+
+            return $this->render('skill/skill_search.html.twig', [
+                'students' => $students,
+                'skills' => $skills,
             ]);
         }
 
+        if (strpos($lowerSearch, 'boy') != 0) {
+            $student = $studentRepository->findOneBy([
+                'firstname' => 'casey',
+            ]);
+
+            $students[] = $student;
+
+            return $this->render('skill/skill_search.html.twig', [
+                'students' => $students,
+                'skills' => $skills,
+            ]);
+        }
+
+        //TODO combine following searches to one result
 
             //test if search is a skill:
         if ($skillRepository->findOneBy(['name' => $data['search']])) {
@@ -155,55 +180,55 @@ class SkillController extends AbstractController
             ]);
 
             $skills = $skillRepository->findAll();
-            $students = $skill->getStudents();
+            $studentsBySkill = $skill->getStudents();
 
-            return $this->render('skill/skill_search.html.twig', [
-                'students' => $students,
-                'skills' => $skills,
-            ]);
+
+
+//            return $this->render('skill/skill_search.html.twig', [
+//                'students' => $students,
+//                'skills' => $skills,
+//            ]);
         }
 
         //test if search is a student - firstname:
-        if ($studentRepository->findOneBy(['firstname' => $data['search']])) {
-            $student = $studentRepository->findOneBy([
+        if ($studentRepository->findBy(['firstname' => $data['search']])) {
+            $studentsByFirstname = $studentRepository->findBy([
                 'firstname' => $data['search'],
             ]);
-
-            $id = $student->getId();
-
-
-            return $this->redirectToRoute('student_show', [
-                'id' => $id,
-
-            ]);
         }
+
 
         //test if search is a student - lastname:
-        if ($studentRepository->findOneBy(['lastname' => $data['search']])) {
-            $student = $studentRepository->findOneBy([
+        if ($studentRepository->findBy(['lastname' => $data['search']])) {
+            $studentsByLastname = $studentRepository->findBy([
                 'lastname' => $data['search'],
-            ]);
-
-            $id = $student->getId();
-
-
-            return $this->redirectToRoute('student_show', [
-                'id' => $id,
             ]);
         }
 
-            //$skill = $skillRepository->findOneBy([
-            //    'name' => $data['search'],
-            //]);
 
 
             $skills = $skillRepository->findAll();
             $students = $studentRepository->findAll();
+            $studentsFound = [];
+
+            foreach ($students as $student) {
+                if(isset($studentsBySkill) && $studentsBySkill->contains($student)) {
+                    $studentsFound[] = $student;
+                    }
+                if(isset($studentsByFirstname) && in_array($student, $studentsByFirstname) && !in_array($student, $studentsFound)) {
+                    $studentsFound[] = $student;
+                }
+                if(isset($studentsByLastname) &&  in_array($student, $studentsByLastname) && !in_array($student, $studentsFound)) {
+                    $studentsFound[] = $student;
+                }
+            }
 
             return $this->render('skill/skill_search.html.twig', [
-                'students' => $students,
+                'students' => $studentsFound,
                 'skills' => $skills,
             ]);
+
+
 
     }
 
@@ -230,10 +255,18 @@ class SkillController extends AbstractController
         $skills = $repository->findAll();
 
         $students = $skill->getStudents();
+        $interestedStudents = $skill->getInterestedStudents();
+
+        if (count($students) == 0) {
+            $students = $interestedStudents;
+        }
+
+
 
 
         return $this->render('skill/skill_search.html.twig', [
             'students' => $students,
+            'interestedStudents' => $interestedStudents,
             'skills' => $skills,
         ]);
 

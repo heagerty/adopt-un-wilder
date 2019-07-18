@@ -22,7 +22,7 @@
         <div class="card-deck student-card-deck">
             {% for student in students %}
                 <div class="card student-card">
-                    <img src="{{ student.profilePhoto }}" class="card-img-top" alt="profile picture">
+                    <a href="/students/profile/{{ student.id }}"><img src="{{ student.profilePhoto }}" class="card-img-top" alt="profile picture"></a>
                     <div class="card-body">
                         <h5 class="card-title">{{ student.firstname }} {{ student.lastname }}</h5>
                         <p class="card-text">{{ student.tagline }}</p>
@@ -39,10 +39,12 @@
                                 <span class="badge badge-pill badge-success">{{ skill }}</span>
                             {% endfor %}
                         </li>
-                        <li class="list-group-item">{{ student.about }}</li>
+                        <!--<li class="list-group-item">{{ student.about }}</li> -->
                     </ul>
                     <div class="card-body">
+                        <a href="https://github.com/{{ student.githubId }}"> <i class="fab fa-github fa-3x"></i></a>
                         <a href="{{ student.linkedInProfile }}"> <i class="fab fa-linkedin fa-3x"></i></a>
+                        <a href="{{ student.linkedInProfile }}"> <i class="far fa-envelope fa-3x"></i></a>
 
                     </div>
                 </div>
@@ -52,7 +54,7 @@
 
 
 
-
+<!--
 
         <table class="table">
             <thead>
@@ -99,5 +101,7 @@
         </table>
 
         <a href="{{ path('student_new') }}">Create new</a>
+
+    -->
     </div>
 {% endblock %}

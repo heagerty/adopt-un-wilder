@@ -69,6 +69,7 @@ class AdvancedSearchController extends AbstractController
         $allStudents = $studentRepository->findAll();
 
         $studentRank = [];
+        $maxSkills = count($skills);
 
         foreach($allStudents as $student) {
 
@@ -93,8 +94,13 @@ class AdvancedSearchController extends AbstractController
             $skillCount = count($matchingSkills) + (count($matchingSkillsToLearn)/2);
 
             if ($skillCount > 0) {
-                $studentRank[$username] = $skillCount;
+
+                $percent = round(100 * $skillCount/$maxSkills);
+                $studentRank[$username] = $percent;
+
             }
+
+
         }
 
          arsort($studentRank);
@@ -105,7 +111,10 @@ class AdvancedSearchController extends AbstractController
                 'username' => $key,
             ]);
 
-            $studentResults[] = $studentFromRank[0];
+
+            $studentResults[] = [$studentFromRank[0], $value];
+
+
         }
 
 
