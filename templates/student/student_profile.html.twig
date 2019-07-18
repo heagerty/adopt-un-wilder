@@ -112,8 +112,8 @@
 
 
                         <a href="/students/{{ student.id }}/edit"type="button" class="w3-button w3-theme pl-0 mt-2 mb-2 mr-2 ml-2"><i class="fa fa-pencil"></i>Edit</a>
-                        <a type="button" class="w3-button w3-theme pl-0 mt-2 mb-2 ml-2"><i class="fa fa-trash"
-                           onclick="return confirm('Are you sure you want to delete this item?');"></i>Delete</a>
+                        <a type="button" onclick="return confirm('Are you sure you want to delete this item?');"
+                           class="w3-button w3-theme pl-0 mt-2 mb-2 ml-2"><i class="fa fa-trash"></i>Delete</a>
                     {% endif %}
                     {% endif %}
                 </div>
