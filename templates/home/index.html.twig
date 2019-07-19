@@ -15,4 +15,29 @@
     </div>
 
 
+    <!-- Large modal -->
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>  -->
+
+    <div class="modal fade hide bd-example-modal-lg" tabindex="-1" id="ad" role="dialog" >
+        <div class="modal-dialog modal-lg ">
+            <div class="modal-content hipster-modal">
+                <h3 class="modal-text">Ramenez un wilder</br> aujourd'hui !</h3>
+{#                <img id="hipster-photo" src="/images/photos/hipster.jpg" alt="hipster">#}
+                <a type="button" class="btn btn-secondary modal-button" href="/students/">Choisir votre Wilder</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script type="text/javascript">
+        $(window).on('load',function(){
+            $('#ad').modal('show');
+        });
+    </script>
 {% endblock %}

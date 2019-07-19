@@ -279,3 +279,30 @@ th, td {
     font-weight: bold;
     padding:  0;
 }
+
+#hipster-photo {
+    width: 100%;
+    height: auto;
+}
+
+.hipster-modal {
+    background-image: url("/images/photos/hipster.jpg");
+    height: 408px;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.modal-text {
+    font-family: 'ITC Avant Garde Gothic Std Bold', Ariel, sans-serif;
+    position: relative;
+    top: 2rem;
+    left: 2rem;
+}
+
+.modal-button {
+    width: 8rem;
+    position: relative;
+    top: 5rem;
+    left: 5rem;
+}
