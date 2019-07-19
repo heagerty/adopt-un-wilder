@@ -42,7 +42,7 @@ class Codewars
     {
 
         $httpClient = HttpClient::create();
-        $response = $httpClient->request('GET', 'https://www.codewars.com/api/v1/users/'.$codewarsId);
+        $response = $httpClient->request('GET', 'https://www.codewars.com/api/v1/users/'.$codewarsId.'?access_key=DfJfLt_KyVgikefJ3uzy');
 
         //$statusCode = $response->getStatusCode();
         // $statusCode = 200
@@ -63,7 +63,7 @@ class Codewars
     {
 
         $httpClient = HttpClient::create();
-        $response = $httpClient->request('GET', 'https://www.codewars.com/api/v1/users/'.$codewarsId);
+        $response = $httpClient->request('GET', 'https://www.codewars.com/api/v1/users/'.$codewarsId.'?access_key=DfJfLt_KyVgikefJ3uzy');
 
         //$statusCode = $response->getStatusCode();
         // $statusCode = 200
