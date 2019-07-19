@@ -132,7 +132,7 @@ class SkillController extends AbstractController
         $lowerSearch = 'x '.strtolower($data['search']);
 
 
-        if (strpos($lowerSearch, 'american') != 0) {
+        if (strpos($lowerSearch, 'american') != 0 || strpos($lowerSearch, 'americain') != 0) {
             $student = $studentRepository->findOneBy([
                 'firstname' => 'casey',
             ]);
@@ -145,7 +145,7 @@ class SkillController extends AbstractController
             ]);
         }
 
-        if (strpos($lowerSearch, 'girl') != 0) {
+        if (strpos($lowerSearch, 'girl') != 0 || strpos($lowerSearch, 'fille') != 0) {
             $student = $studentRepository->findOneBy([
                 'firstname' => 'francesca',
             ]);
