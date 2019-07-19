@@ -279,11 +279,13 @@ th, td {
     padding: 0;
     margin: 0;
     padding-left: 1rem;
+    text-align: left;
 }
 
 .less-bottom-padding {
     font-weight: bold;
     padding:  0;
+    text-align: right;
 }
 
 #hipster-photo {
