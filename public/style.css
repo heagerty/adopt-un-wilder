@@ -28,6 +28,10 @@
     padding-top: 1rem;
 }
 
+.navbar {
+    padding: .5rem 1rem;
+}
+
 .nav-img{
     margin-top: -0.5rem;
 }
@@ -60,7 +64,9 @@
 
 
 .nav-title{
-    padding-left: 6px;
+    padding-left: 8px;
+    position: relative;
+    bottom: .4rem;
 }
 
 .ag-thick {
