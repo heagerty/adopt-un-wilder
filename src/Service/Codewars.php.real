@@ -41,13 +41,8 @@ class Codewars
     public function getHonor(string $codewarsId) : ?int
     {
 
-        //$httpClient = HttpClient::create();
-        //$response = $httpClient->request('GET', 'https://www.codewars.com/api/v1/users/'.$codewarsId.'?access_key=DfJfLt_KyVgikefJ3uzy');
-
-
-        $jsonFile = file_get_contents('JSON/'.$codewarsId.'.json');
-
-        $json = json_decode($jsonFile, true);
+        $httpClient = HttpClient::create();
+        $response = $httpClient->request('GET', 'https://www.codewars.com/api/v1/users/'.$codewarsId.'?access_key=DfJfLt_KyVgikefJ3uzy');
 
         //$statusCode = $response->getStatusCode();
         // $statusCode = 200
@@ -55,13 +50,10 @@ class Codewars
         // $contentType = 'application/json'
         //$content = $response->getContent();
         // $content = '{"id":521583, "name":"symfony-docs", ...}'
-        //$content = $json->toArray();
-        //$content = $response->toArray();     old one
+        $content = $response->toArray();
         // $content = ['id' => 521583, 'name' => 'symfony-docs', ...]
 
-        //var_dump($json);
-
-        $honor = $json['honor'];
+        $honor = $content['honor'];
 
         return $honor;
     }
