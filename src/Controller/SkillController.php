@@ -244,6 +244,14 @@ class SkillController extends AbstractController
                 }
             }
 
+
+
+            if (empty($studentsFound)) {
+                $studentsFound[] = $studentRepository->findOneBy([
+                    'firstname' => 'casey',
+                ]);
+            }
+
             return $this->render('skill/skill_search.html.twig', [
                 'students' => $studentsFound,
                 'skills' => $skills,
