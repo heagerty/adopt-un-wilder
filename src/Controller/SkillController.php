@@ -17,8 +17,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 
 
-
-
 /**
  * @Route("/skill")
  */
@@ -125,9 +123,7 @@ class SkillController extends AbstractController
         $skills = $skillRepository->findAll();
 
 
-        //TODO rewrite search as 'OR' to return both students that know Git and Mary Git
-
-        //sucker searches:
+        //sucker searches:   :-)
 
         $lowerSearch = 'x '.strtolower($data['search']);
 
@@ -172,7 +168,6 @@ class SkillController extends AbstractController
         }
 
 
-
             //test if search is a skill:
         if ($skillRepository->findOneBy(['name' => $data['search']])) {
             $skill = $skillRepository->findOneBy([
@@ -182,12 +177,6 @@ class SkillController extends AbstractController
 
             $studentsBySkill = $skill->getStudents();
 
-
-
-//            return $this->render('skill/skill_search.html.twig', [
-//                'students' => $students,
-//                'skills' => $skills,
-//            ]);
         }
 
         //test if search is a student - firstname:
@@ -227,9 +216,6 @@ class SkillController extends AbstractController
         }
 
 
-
-
-
             //$studentsFound = [];
 
             foreach ($students as $student) {
@@ -245,7 +231,6 @@ class SkillController extends AbstractController
             }
 
 
-
             if (empty($studentsFound)) {
                 $studentsFound[] = $studentRepository->findOneBy([
                     'firstname' => 'casey',
@@ -256,7 +241,6 @@ class SkillController extends AbstractController
                 'students' => $studentsFound,
                 'skills' => $skills,
             ]);
-
 
 
     }
@@ -289,8 +273,6 @@ class SkillController extends AbstractController
         if (count($students) == 0) {
             $students = $interestedStudents;
         }
-
-
 
 
         return $this->render('skill/skill_search.html.twig', [

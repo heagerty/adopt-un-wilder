@@ -6,10 +6,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
-
-<style>
-    html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
-</style>
+<link rel="stylesheet" href="/profile.css">
 
     {% endblock %}
 
@@ -19,7 +16,7 @@
 
 
 <!-- Page Container -->
-<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+<div class="w3-container w3-content mt-80">
     <!-- The Grid -->
     <div class="w3-row">
         <!-- Left Column -->
@@ -28,7 +25,7 @@
             <div class="w3-card w3-round w3-white">
                 <div class="w3-container">
                     <h2 class="w3-center">{{ student.firstname }} {{ student.lastname }}</h2>
-                    <p class="w3-center"><img src="{{ student.profilePhoto }}" class="w4-circle" style="height:250px; width:250px" alt="Avatar"></p>
+                    <p class="w3-center"><img src="{{ student.profilePhoto }}" class="w4-circle profilephoto" alt="Avatar"></p>
                     <hr>
                     <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>WCS Orléans</p>
                     <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{ student.city }}</p>
@@ -41,18 +38,17 @@
                 <div class="w3-container">
                     <h5 class="pb-3 pt-3">Contactez-moi à propos...</h5>
                     {%   if student.isLookingForInternship == true %}
-                    <p style="vertical-align: baseline;"> d'un stage<i class="fas fa-toggle-on fa-fw w3-margin-right w3-text-theme w3-xxlarge" style="vertical-align: middle;"></i></p>
+                    <p class="v-align-baseline"> d'un stage<i class="fas fa-toggle-on fa-fw w3-margin-right w3-text-theme w3-xxlarge v-align-middle"></i></p>
                     {% else %}
-                    <p style="vertical-align: baseline;"> d'un stage<i class="fas fa-toggle-off fa-fw w3-margin-right w3-text-theme w3-xxlarge" style="vertical-align: middle;"></i></p>
+                    <p class="v-align-baseline"> d'un stage<i class="fas fa-toggle-off fa-fw w3-margin-right w3-text-theme w3-xxlarge v-align-middle"></i></p>
                     {% endif %}
                     <p>
 
                     {%   if student.isLookingForJob == true %}
-                    <p style="vertical-align: baseline;"> d'un CDI<i class="fas fa-toggle-on fa-fw w3-margin-right ml-2 w3-text-theme w3-xxlarge" style="vertical-align: middle"></i></p>
+                    <p class="v-align-baseline"> d'un CDI<i class="fas fa-toggle-on fa-fw w3-margin-right ml-2 w3-text-theme w3-xxlarge v-align-middle"></i></p>
                     {% else %}
-                    <p style="vertical-align: baseline;"> d'un CDI<i class="fas fa-toggle-off fa-fw w3-margin-right ml-2 w3-text-theme w3-xxlarge" style="vertical-align: middle"></i></p>
+                    <p class="v-align-baseline"> d'un CDI<i class="fas fa-toggle-off fa-fw w3-margin-right ml-2 w3-text-theme w3-xxlarge v-align-middle"></i></p>
                     {% endif %}
-
 
                 </div>
             </div>
@@ -77,17 +73,12 @@
             </div>
 
 
-
-
-
         </div>
 
 
 
         <!-- Middle Column -->
         <div class="w3-col m7">
-
-
 
 
             <div class="w3-row-padding">
@@ -123,7 +114,6 @@
                         </p>
                     </div>
                 </div>
-
 
 
             </div>
@@ -163,7 +153,6 @@
         <div class="w3-col m2">
 
 
-
             <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
                 <p><a href=""><i class="fa fa-envelope w3-xxlarge"></i></a></p>
             </div>
@@ -180,7 +169,8 @@
             <br>
 
             <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
-                <a href="https://www.codewars.com/users/{{ student.codewarsId }}"><p><img src="/images/icons-logos/codewars_bw.png" class="cw-profile"></p>
+                <a href="https://www.codewars.com/users/{{ student.codewarsId }}">
+                    <p><img src="/images/icons-logos/codewars_bw.png" class="cw-profile"></p>
                 <p class="honor">{{ honor }}</p></a>
             </div>
             <br>
@@ -191,10 +181,11 @@
 
             <div class="w3-card w3-round w3-white w3-center mb-0">
                 <div class="w3-container pt-2">
-                    <p>Apprendre plus sur</br>
+                    <p>Apprendre plus sur<br>
                     la Wild Code School</p>
-                    <a href="https://wildcodeschool.fr/"><img src="/images/WCS_logo_pink_176x60.png" alt="Wild Code School logo" class="wcs-logo-profile mb-2 pb-2" ></a>
-
+                    <a href="https://wildcodeschool.fr/">
+                        <img src="/images/WCS_logo_pink_176x60.png" alt="Wild Code School logo"
+                             class="wcs-logo-profile mb-2 pb-2" ></a>
 
                 </div>
             </div>

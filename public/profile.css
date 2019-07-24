@@ -1,0 +1,24 @@
+
+html, body, h1, h2, h3, h4, h5 {
+    font-family: "Open Sans", sans-serif;
+}
+
+
+.mt-80 {
+    max-width:1400px;
+    margin-top: 80px;
+}
+
+.profilephoto {
+    height:250px;
+    width:250px;
+}
+
+.v-align-baseline {
+    vertical-align: baseline;
+}
+
+.v-align-middle {
+    vertical-align: middle;
+
+}
