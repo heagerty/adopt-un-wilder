@@ -87,61 +87,6 @@
 }
 
 
-/* homepage background */
-@media screen and (min-width: 1200px) {
-    body, html {
-        height: 100%;
-        background-image: url("/images/backgrounds/shhh.jpg");
-        background-size: 90%;
-        background-position: 40rem ;
-        background-repeat: no-repeat;
-    }
-}
-@media screen and (min-width: 1200px) {
-    body, html {
-        height: 100%;
-        background-image: url("/images/backgrounds/shhh.jpg");
-        background-size: 90%;
-        background-position: 40rem ;
-        background-repeat: no-repeat;
-    }
-}
-@media screen and (min-width: 600px) {
-    body, html {
-        height: 100%;
-        background-image: url("/images/backgrounds/shhh.jpg");
-        background-size: 100%;
-        background-position: 10rem ;
-        background-repeat: no-repeat;
-    }
-}
-@media screen and (min-width: 900px) {
-    body, html {
-        height: 100%;
-        background-image: url("/images/backgrounds/shhh.jpg");
-        background-size: 90%;
-        background-position: 20rem ;
-        background-repeat: no-repeat;
-    }
-}
-@media screen and (min-width: 1200px) {
-    body, html {
-        height: 100%;
-        background-image: url("/images/backgrounds/shhh.jpg");
-        background-size: 90%;
-        background-position: 30rem ;
-        background-repeat: no-repeat;
-    }
-}
-@media screen and (min-width: 1500px) {
-    body, html {
-        height: 100%;
-        background-image: url("/images/backgrounds/shhh.jpg");
-        background-size: 90%;
-        background-position: 40rem ;
-        background-repeat: no-repeat;
-    }
-}
 
 
 h1 {
