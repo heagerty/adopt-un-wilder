@@ -88,9 +88,61 @@
 
 
 /* homepage background */
-body, html {
-    height: 100%;
+@media screen and (min-width: 1200px) {
+    body, html {
+        height: 100%;
+        background-image: url("/images/backgrounds/shhh.jpg");
+        background-size: 90%;
+        background-position: 40rem ;
+        background-repeat: no-repeat;
+    }
 }
+@media screen and (min-width: 1200px) {
+    body, html {
+        height: 100%;
+        background-image: url("/images/backgrounds/shhh.jpg");
+        background-size: 90%;
+        background-position: 40rem ;
+        background-repeat: no-repeat;
+    }
+}
+@media screen and (min-width: 600px) {
+    body, html {
+        height: 100%;
+        background-image: url("/images/backgrounds/shhh.jpg");
+        background-size: 100%;
+        background-position: 10rem ;
+        background-repeat: no-repeat;
+    }
+}
+@media screen and (min-width: 900px) {
+    body, html {
+        height: 100%;
+        background-image: url("/images/backgrounds/shhh.jpg");
+        background-size: 90%;
+        background-position: 20rem ;
+        background-repeat: no-repeat;
+    }
+}
+@media screen and (min-width: 1200px) {
+    body, html {
+        height: 100%;
+        background-image: url("/images/backgrounds/shhh.jpg");
+        background-size: 90%;
+        background-position: 30rem ;
+        background-repeat: no-repeat;
+    }
+}
+@media screen and (min-width: 1500px) {
+    body, html {
+        height: 100%;
+        background-image: url("/images/backgrounds/shhh.jpg");
+        background-size: 90%;
+        background-position: 40rem ;
+        background-repeat: no-repeat;
+    }
+}
+
 
 h1 {
     text-align: center;
@@ -120,15 +172,23 @@ h1 {
         background-image: url("/images/backgrounds/attractive-bedroom.jpg");
         background-image: url("/images/backgrounds/shhh.jpg");
         background-image: url("/images/backgrounds/man-laptop.jpg");
-    */
 
-    /*background-color: #8959A8; */
+
     background-image: url("/images/backgrounds/shhh.jpg");
     height: calc(100% - 70px);
     background-position: left;
     background-repeat: no-repeat;
 
+ */
+
+
 }
+
+
+
+
+
+
 
 /* to cover
     background-image: url("/images/backgrounds/girl-at-computer.jpeg");

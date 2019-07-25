@@ -9,19 +9,55 @@
 .clearfix:after{clear:both;display:block}
 a{color:inherit;text-decoration:none}
 
-.login-wrap{
-    width:100%;
-    margin:auto;
-    max-width:525px;
-    min-height:550px;
-    position:relative;
-    right: 32rem;
-    top: 4rem;
-    background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
-    box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
-    color:#6a6f8c;
-
+@media screen and (min-width: 1000px) {
+    .login-wrap{
+        width:100%;
+        margin-top: auto;
+        margin-left: 30rem;
+        max-width:525px;
+        min-height:550px;
+        position:relative;
+        right: 32rem;
+        top: 4rem;
+        background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
+        box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+        color:#6a6f8c;
+    }
 }
+
+@media screen and (min-width: 1200px) {
+    .login-wrap{
+        width:100%;
+        margin-top: auto;
+        margin-left: 35rem;
+        max-width:525px;
+        min-height:550px;
+        position:relative;
+        right: 32rem;
+        top: 4rem;
+        background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
+        box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+        color:#6a6f8c;
+    }
+}
+@media screen and (min-width: 1400px) {
+    .login-wrap{
+        width:100%;
+        margin-top: auto;
+        margin-left: 40rem;
+        max-width:525px;
+        min-height:550px;
+        position:relative;
+        right: 32rem;
+        top: 4rem;
+        background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
+        box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+        color:#6a6f8c;
+    }
+}
+
+
+
 .login-html{
     width:100%;
     height:100%;
