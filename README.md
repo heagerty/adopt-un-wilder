@@ -6,16 +6,11 @@
 
 ## Getting Started
 
-### Install
 
 1. Clone this project
 2. Run `composer install`
-3. Run `yarn install`
-
-### Working
-
- Run `php bin/console server:run` to launch your local php web server
-
+3. Import sample data from  `SQL/adopt.sql`
+4. Enjoy
 
 
 Made over several days for the Wild Code School by Casey Heagerty.
